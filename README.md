@@ -9,7 +9,7 @@ This brings added security and flexibility to product development when using the
 
 ![Device Firmware Update](resources/dfu.png)
 
-This repository contains a tested library for Android 4.3+ platform which may be used to perform Device Firmware Update on the nRF5x device using a phone or a tablet.
+This repository contains a tested library for iOS 8+ platform which may be used to perform Device Firmware Update on the nRF5x device using an iPhone or an iPad.
 
 DFU library has been designed to make it very easy to include these devices into your application. It is compatible with all Bootloader/DFU versions.
 
