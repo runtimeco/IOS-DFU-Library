@@ -99,7 +99,7 @@ To start the DFU process you have to do 2 things:
     ```
     Swift:
     ```swift
-    let initiator = DFUServiceInitiator(centralManager: centralManager, target: peripheral).withFirmwareFile(firmware)
+    let initiator = DFUServiceInitiator(centralManager: centralManager, target: peripheral).withFirmwareFile(selectedFirmware)
     // Optional:
     // initiator.forceDfu = true/false; // default false
     // initiator.packetReceiptNotificationParameter = N; // default is 12
@@ -119,4 +119,4 @@ Check the nRF Toolbox project ([here](https://github.com/NordicSemiconductor/IOS
 
 ### Issues
 
-Please, submit all issues to the IOD DFU Library [here](https://github.com/NordicSemiconductor/IOS-DFU-Library/issues "Issues").
+Please, submit all issues to the iOS DFU Library [here](https://github.com/NordicSemiconductor/IOS-DFU-Library/issues "Issues").
