@@ -58,7 +58,6 @@
 		525EF61B1C74DE1B009260A7 /* DFUControlPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EF61A1C74DE1B009260A7 /* DFUControlPoint.swift */; };
 		525EF61E1C74E8C0009260A7 /* DFUPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EF61D1C74E8C0009260A7 /* DFUPeripheralDelegate.swift */; };
 		525EF6221C77423A009260A7 /* DFUService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EF6211C77423A009260A7 /* DFUService.swift */; };
-		52704A841C723B5100ED2B19 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 52704A831C723B5100ED2B19 /* README */; };
 		52C12B621C6B8B28004D9DB8 /* DFULibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C12B611C6B8B28004D9DB8 /* DFULibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52C12B691C6B8B28004D9DB8 /* DFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C12B5E1C6B8B28004D9DB8 /* DFULibrary.framework */; };
 		52C12B6E1C6B8B28004D9DB8 /* DFULibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C12B6D1C6B8B28004D9DB8 /* DFULibraryTests.swift */; };
@@ -138,7 +137,6 @@
 		525EF61A1C74DE1B009260A7 /* DFUControlPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DFUControlPoint.swift; sourceTree = "<group>"; };
 		525EF61D1C74E8C0009260A7 /* DFUPeripheralDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DFUPeripheralDelegate.swift; sourceTree = "<group>"; };
 		525EF6211C77423A009260A7 /* DFUService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DFUService.swift; sourceTree = "<group>"; };
-		52704A831C723B5100ED2B19 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
 		52C12B5E1C6B8B28004D9DB8 /* DFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C12B611C6B8B28004D9DB8 /* DFULibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFULibrary.h; sourceTree = "<group>"; };
 		52C12B631C6B8B28004D9DB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 		52C12B541C6B8B28004D9DB8 = {
 			isa = PBXGroup;
 			children = (
-				52704A831C723B5100ED2B19 /* README */,
 				52C12B601C6B8B28004D9DB8 /* DFULibrary */,
 				52C12B6C1C6B8B28004D9DB8 /* DFULibraryTests */,
 				52C12BA51C6CAC4E004D9DB8 /* Frameworks */,
@@ -515,7 +512,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52704A841C723B5100ED2B19 /* README in Resources */,
 				5254A9451C7226D300AA1164 /* README in Resources */,
 				5254A9331C7220F300AA1164 /* README in Resources */,
 			);
