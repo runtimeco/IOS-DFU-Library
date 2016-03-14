@@ -213,6 +213,7 @@ internal struct PacketReceiptNotification {
     private var report:ErrorCallback?
     private var request:Request?
     private var uploadStartTime:CFAbsoluteTime?
+    private var resetSent:Bool = false
     
     var valid:Bool {
         return characteristic.properties.isSupersetOf([CBCharacteristicProperties.Write, CBCharacteristicProperties.Notify])
@@ -255,6 +256,7 @@ internal struct PacketReceiptNotification {
         self.success = success
         self.report = report
         self.request = request
+        self.resetSent = false
         
         // Get the peripheral object
         let peripheral = characteristic.service.peripheral
@@ -269,6 +271,10 @@ internal struct PacketReceiptNotification {
             }
         case .InitDfuParameters_v1:
             logger.a("Writing \(request.description)...")
+        case .ActivateAndReset, .Reset:
+            // Those two requests may not be confirmed by the remote DFU target. The device may be restarted before sending ACK.
+            // This would cause an error in peripheral:didWriteValueForCharacteristic:error, which may be ignored in this case.
+            self.resetSent = true
         default:
             break
         }
@@ -310,9 +316,18 @@ internal struct PacketReceiptNotification {
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if error != nil {
-            logger.e("Writing to characteristic failed")
-            logger.e(error!)
-            report?(error:DFUError.WritingCharacteristicFailed, withMessage:"Writing to characteristic failed")
+            if !self.resetSent {
+                logger.e("Writing to characteristic failed")
+                logger.e(error!)
+                report?(error:DFUError.WritingCharacteristicFailed, withMessage:"Writing to characteristic failed")
+            } else {
+                // When an 'Activate and Reset' or 'Reset' command is sent the device may reset before sending the acknowledgement.
+                // This is not a blocker, as the device did disconnected and reset successfully.
+                logger.a("\(request!.description) request sent")
+                logger.w("Device disconnected before sending ACK")
+                logger.w(error!)
+                success?()
+            }
         } else {
             logger.i("Data written to \(DFUControlPoint.UUID.UUIDString)")
             
@@ -336,9 +351,10 @@ internal struct PacketReceiptNotification {
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if error != nil {
-            logger.e("Writing to characteristic failed")
+            // This characteristic is never read, the error may only pop up when notification is received
+            logger.e("Receiving notification failed")
             logger.e(error!)
-            report?(error:DFUError.WritingCharacteristicFailed, withMessage:"Writing to characteristic failed")
+            report?(error:DFUError.ReceivingNotificatinoFailed, withMessage:"Receiving notification failed")
         } else {
             // During the upload we may get either a Packet Receipt Notification, or a Response with status code
             if proceed != nil {

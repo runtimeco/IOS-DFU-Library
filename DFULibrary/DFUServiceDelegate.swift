@@ -48,9 +48,10 @@
     case ReadingVersionFailed        = 303
     case EnablingControlPointFailed  = 304
     case WritingCharacteristicFailed = 305
-    case UnsupportedResponse         = 306
+    case ReceivingNotificatinoFailed = 306
+    case UnsupportedResponse         = 307
     /// Error called during upload when the number of bytes sent is not equal to number of bytes confirmed in Packet Receipt Notification.
-    case BytesLost                   = 307
+    case BytesLost                   = 308
 }
 
 /**

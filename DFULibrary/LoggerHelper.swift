@@ -47,6 +47,10 @@ internal class LoggerHelper {
         self.initiator.logger?.logWith(.Warning, message: message)
     }
     
+    func w(error:NSError) {
+        self.initiator.logger?.logWith(.Warning, message: "Error \(error.code): \(error.localizedDescription)");
+    }
+    
     func e(message:String) {
         self.initiator.logger?.logWith(.Error, message: message)
     }
