@@ -271,9 +271,9 @@ internal struct PacketReceiptNotification {
             }
         case .InitDfuParameters_v1:
             logger.a("Writing \(request.description)...")
-        case .ActivateAndReset, .Reset:
-            // Those two requests may not be confirmed by the remote DFU target. The device may be restarted before sending ACK.
-            // This would cause an error in peripheral:didWriteValueForCharacteristic:error, which may be ignored in this case.
+        case .JumpToBootloader, .ActivateAndReset, .Reset:
+            // Those three requests may not be confirmed by the remote DFU target. The device may be restarted before sending the ACK.
+            // This would cause an error in peripheral:didWriteValueForCharacteristic:error, which can be ignored in this case.
             self.resetSent = true
         default:
             break
