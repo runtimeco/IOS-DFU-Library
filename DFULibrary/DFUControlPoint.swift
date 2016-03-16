@@ -321,8 +321,8 @@ internal struct PacketReceiptNotification {
                 logger.e(error!)
                 report?(error:DFUError.WritingCharacteristicFailed, withMessage:"Writing to characteristic failed")
             } else {
-                // When an 'Activate and Reset' or 'Reset' command is sent the device may reset before sending the acknowledgement.
-                // This is not a blocker, as the device did disconnected and reset successfully.
+                // When a 'JumpToBootloader', 'Activate and Reset' or 'Reset' command is sent the device may reset before sending the acknowledgement.
+                // This is not a blocker, as the device did disconnect and reset successfully.
                 logger.a("\(request!.description) request sent")
                 logger.w("Device disconnected before sending ACK")
                 logger.w(error!)
