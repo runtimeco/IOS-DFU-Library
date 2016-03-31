@@ -184,6 +184,8 @@ import CoreBluetooth
      */
     public init(centralManager:CBCentralManager, target:CBPeripheral) {
         self.centralManager = centralManager
+        // Just to be sure that manager is not scanning
+        self.centralManager.stopScan()
         self.target = target
         self.peripheralSelector = DefaultDFUPeripheralSelector()
     }

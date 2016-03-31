@@ -379,19 +379,26 @@ import CoreBluetooth
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        // Is this a device we are looking for?
-        if peripheralSelector!.select(peripheral, advertisementData: advertisementData, RSSI: RSSI) {
-            // Hurray!
-            centralManager.stopScan()
-            
-            if let name = peripheral.name {
-                logger.i("DFU Bootloader found with name \(name)")
-            } else {
-                logger.i("DFU Bootloader found")
+        if let peripheralSelector = peripheralSelector {
+            // Is this a device we are looking for?
+            if peripheralSelector.select(peripheral, advertisementData: advertisementData, RSSI: RSSI) {
+                // Hurray!
+                centralManager.stopScan()
+                
+                if let name = peripheral.name {
+                    logger.i("DFU Bootloader found with name \(name)")
+                } else {
+                    logger.i("DFU Bootloader found")
+                }
+                
+                self.peripheral = peripheral
+                self.peripheralSelector = nil
+                connect()
             }
-            
-            self.peripheral = peripheral
-            connect()
+        } else {
+            // Don't use central manager while DFU is in progress!
+            print("DFU in progress, don't use this CentralManager instance!")
+            centralManager.stopScan()
         }
     }
     
