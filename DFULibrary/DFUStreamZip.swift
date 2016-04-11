@@ -27,12 +27,14 @@ internal enum DFUStreamZipError : ErrorType {
     case NoManifest
     case InvalidManifest
     case FileNotFound
+    case TypeNotFound
     
     var description:String {
         switch self {
         case .NoManifest: return NSLocalizedString("No manifest file found", comment: "")
         case .InvalidManifest: return NSLocalizedString("Invalid manifest.json file", comment: "")
         case .FileNotFound: return NSLocalizedString("File specified in manifest.json not found in ZIP", comment: "")
+        case .TypeNotFound: return NSLocalizedString("Specified type not found in manifest.json", comment: "")
         }
     }
 }
@@ -133,7 +135,22 @@ internal class DFUStreamZip : DFUStream {
      
      - returns: the stream
      */
-    init(urlToZipFile:NSURL) throws {
+    convenience init(urlToZipFile:NSURL) throws {
+        let allTypes = FIRMWARE_TYPE_SOFTDEVICE | FIRMWARE_TYPE_BOOTLOADER | FIRMWARE_TYPE_APPLICATION
+        try self.init(urlToZipFile: urlToZipFile, type: allTypes)
+    }
+    
+    /**
+     Initializes the stream with URL to the ZIP file.
+     
+     - parameter urlToZipFile: URL to the ZIP file with firmware files and manifest.json file containing metadata.
+     - parameter type:         The type of the firmware to use
+     
+     - throws: DFUStreamZipError when manifest file was not found or contained an error
+     
+     - returns: the stream
+     */
+    init(urlToZipFile:NSURL, type:UInt8) throws {
         // Try to unzip the file. This may throw an exception
         let contentUrls = try ZipArchive.unzip(urlToZipFile)
         
@@ -161,57 +178,73 @@ internal class DFUStreamZip : DFUStream {
                 // of: softdeviceBootloader, softdevice or bootloader
                 
                 // Look for and assign files specified in the manifest
-                if let softdeviceBootloader = manifest.softdeviceBootloader {
-                    let (bin, dat) = try getContentOf(softdeviceBootloader, from: contentUrls)
-                    systemBinaries = bin
-                    systemInitPacket = dat
-                    softdeviceSize = softdeviceBootloader.sdSize
-                    bootloaderSize = softdeviceBootloader.blSize
-                    currentPartType = FIRMWARE_TYPE_SOFTDEVICE | FIRMWARE_TYPE_BOOTLOADER
-                }
-                
-                if let softdevice = manifest.softdevice {
-                    if systemBinaries != nil {
-                        // It is not allowed to put both softdevice and softdeviceBootloader in the manifest
-                        throw DFUStreamZipError.InvalidManifest
-                    }
-                    let (bin, dat) = try getContentOf(softdevice, from: contentUrls)
-                    systemBinaries = bin
-                    systemInitPacket = dat
-                    softdeviceSize = UInt32(bin.length)
-                    currentPartType = FIRMWARE_TYPE_SOFTDEVICE
-                }
-                
-                if let bootloader = manifest.bootloader {
-                    if systemBinaries != nil {
-                        // It is not allowed to put both bootloader and softdeviceBootloader in the manifest
-                        throw DFUStreamZipError.InvalidManifest
-                    }
-                    let (bin, dat) = try getContentOf(bootloader, from: contentUrls)
-                    systemBinaries = bin
-                    systemInitPacket = dat
-                    bootloaderSize = UInt32(bin.length)
-                    currentPartType = FIRMWARE_TYPE_BOOTLOADER
-                }
-                
-                if let application = manifest.application {
-                    let (bin, dat) = try getContentOf(application, from: contentUrls)
-                    appBinaries = bin
-                    appInitPacket = dat
-                    applicationSize = UInt32(bin.length)
-                    if currentPartType == 0 {
-                        currentPartType = FIRMWARE_TYPE_APPLICATION
-                    } else {
-                        // Otherwise the app will be sent as part 2
-                        
-                        // It is not possible to send SD+BL+App in a single connection, due to a fact that 
-                        // the softdevice_bootloade_application section is not defined for the manifest.json file.
-                        // It would be possible to send both bin (systemBinaries and appBinaries), but there are
-                        // two dat files with two Init Packets and non of them matches two combined binaries.
+                let softdeviceBootloaderType = FIRMWARE_TYPE_SOFTDEVICE | FIRMWARE_TYPE_BOOTLOADER
+                if type & softdeviceBootloaderType == softdeviceBootloaderType {
+                    if let softdeviceBootloader = manifest.softdeviceBootloader {
+                        let (bin, dat) = try getContentOf(softdeviceBootloader, from: contentUrls)
+                        systemBinaries = bin
+                        systemInitPacket = dat
+                        softdeviceSize = softdeviceBootloader.sdSize
+                        bootloaderSize = softdeviceBootloader.blSize
+                        currentPartType = softdeviceBootloaderType
                     }
                 }
                 
-                if systemBinaries != nil {
+                let softdeviceType = FIRMWARE_TYPE_SOFTDEVICE
+                if type & softdeviceType == softdeviceType {
+                    if let softdevice = manifest.softdevice {
+                        if systemBinaries != nil {
+                            // It is not allowed to put both softdevice and softdeviceBootloader in the manifest
+                            throw DFUStreamZipError.InvalidManifest
+                        }
+                        let (bin, dat) = try getContentOf(softdevice, from: contentUrls)
+                        systemBinaries = bin
+                        systemInitPacket = dat
+                        softdeviceSize = UInt32(bin.length)
+                        currentPartType = softdeviceType
+                    }
+                }
+                
+                let bootloaderType = FIRMWARE_TYPE_BOOTLOADER
+                if type & bootloaderType == bootloaderType {
+                    if let bootloader = manifest.bootloader {
+                        if systemBinaries != nil {
+                            // It is not allowed to put both bootloader and softdeviceBootloader in the manifest
+                            throw DFUStreamZipError.InvalidManifest
+                        }
+                        let (bin, dat) = try getContentOf(bootloader, from: contentUrls)
+                        systemBinaries = bin
+                        systemInitPacket = dat
+                        bootloaderSize = UInt32(bin.length)
+                        currentPartType = bootloaderType
+                    }
+                }
+                
+                let applicationType = FIRMWARE_TYPE_APPLICATION
+                if type & applicationType == applicationType {
+                    if let application = manifest.application {
+                        let (bin, dat) = try getContentOf(application, from: contentUrls)
+                        appBinaries = bin
+                        appInitPacket = dat
+                        applicationSize = UInt32(bin.length)
+                        if currentPartType == 0 {
+                            currentPartType = applicationType
+                        } else {
+                            // Otherwise the app will be sent as part 2
+                            
+                            // It is not possible to send SD+BL+App in a single connection, due to a fact that
+                            // the softdevice_bootloade_application section is not defined for the manifest.json file.
+                            // It would be possible to send both bin (systemBinaries and appBinaries), but there are
+                            // two dat files with two Init Packets and non of them matches two combined binaries.
+                        }
+                    }
+                }
+                
+                if systemBinaries == nil && appBinaries == nil {
+                    // The specified type is not included in the manifest.
+                    throw DFUStreamZipError.TypeNotFound
+                }
+                else if systemBinaries != nil {
                     currentBinaries = systemBinaries
                     currentInitPacket = systemInitPacket
                 } else {
