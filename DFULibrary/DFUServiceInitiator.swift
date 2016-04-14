@@ -88,16 +88,16 @@ import CoreBluetooth
      The service delegate is an object that will be notified about state changes of the DFU Service.
      Setting it is optional but recommended.
      */
-    public var delegate:DFUServiceDelegate?
+    public weak var delegate:DFUServiceDelegate?
     /**
      An optional progress delegate will be called only during upload. It notifies about current upload
      percentage and speed.
      */
-    public var progressDelegate:DFUProgressDelegate?
+    public weak var progressDelegate:DFUProgressDelegate?
     /**
      The logger is an object that should print given messages to the user. It is optional.
      */
-    public var logger:LoggerDelegate?
+    public weak var logger:LoggerDelegate?
     /**
      The selector object is used during sending a firmware containing a Softdevice (or Softdevice and Bootloader)
      and the Application. After flashing the first part (containing the Softdevice), the device restarts in the
