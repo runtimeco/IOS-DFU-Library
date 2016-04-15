@@ -42,13 +42,11 @@
 		5254A92E1C72147200AA1164 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A90D1C72147200AA1164 /* QuickZip.swift */; };
 		5254A9301C72147200AA1164 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A90F1C72147200AA1164 /* Zip.swift */; };
 		5254A9311C72147200AA1164 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9101C72147200AA1164 /* ZipUtilities.swift */; };
-		5254A9331C7220F300AA1164 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 5254A9321C7220F300AA1164 /* README */; };
 		5254A93D1C72269D00AA1164 /* EVExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9361C72269D00AA1164 /* EVExtensions.swift */; };
 		5254A93E1C72269D00AA1164 /* EVObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9371C72269D00AA1164 /* EVObject.swift */; };
 		5254A93F1C72269D00AA1164 /* EVObjectDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9381C72269D00AA1164 /* EVObjectDescription.swift */; };
 		5254A9411C72269D00AA1164 /* EVReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A93A1C72269D00AA1164 /* EVReflection.swift */; };
 		5254A9421C72269D00AA1164 /* EVWorkaroundHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A93B1C72269D00AA1164 /* EVWorkaroundHelpers.swift */; };
-		5254A9451C7226D300AA1164 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 5254A9441C7226D300AA1164 /* README */; };
 		525EF60C1C737941009260A7 /* IntelHex2BinConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 525EF60A1C737941009260A7 /* IntelHex2BinConverter.h */; };
 		525EF60D1C737941009260A7 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 525EF60B1C737941009260A7 /* IntelHex2BinConverter.m */; };
 		525EF6101C737A67009260A7 /* DFUStreamHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EF60F1C737A67009260A7 /* DFUStreamHex.swift */; };
@@ -482,7 +480,7 @@
 				TargetAttributes = {
 					52C12B5D1C6B8B28004D9DB8 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 36RPL4Q4B6;
+						DevelopmentTeam = P3R8YQEV4L;
 					};
 					52C12B671C6B8B28004D9DB8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -512,8 +510,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5254A9451C7226D300AA1164 /* README in Resources */,
-				5254A9331C7220F300AA1164 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -611,6 +608,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -634,10 +632,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(VALID_ARCHS)";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -647,6 +646,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -660,7 +660,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -677,9 +678,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "$(VALID_ARCHS)";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -688,6 +691,7 @@
 		52C12B731C6B8B28004D9DB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -703,23 +707,26 @@
 				);
 				INFOPLIST_FILE = DFULibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nordicsemi.DFULibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/DFULibrary/Zip/minizip ${SRCROOT}/DFULibrary/HexToBinConverter";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "$(VALID_ARCHS)";
 			};
 			name = Debug;
 		};
 		52C12B741C6B8B28004D9DB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -732,12 +739,15 @@
 				);
 				INFOPLIST_FILE = DFULibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nordicsemi.DFULibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/DFULibrary/Zip/minizip ${SRCROOT}/DFULibrary/HexToBinConverter";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				VALID_ARCHS = "$(VALID_ARCHS)";
 			};
 			name = Release;
 		};
