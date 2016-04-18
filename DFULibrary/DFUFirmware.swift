@@ -31,6 +31,9 @@ The type of the BIN or HEX file.
     case Softdevice = 1
     case Bootloader = 2
     case Application = 4
+    // Merged option values (due to objc - Swift compatibility).
+    case SoftdeviceBootloader = 3
+    case SoftdeviceBootloaderApplication = 7
 }
 
 /// The DFUFirmware object wraps the firmware file.
@@ -81,7 +84,21 @@ The type of the BIN or HEX file.
      
      - returns: the DFU firmware object or null in case of an error
      */
-    public init?(urlToZipFile:NSURL) {
+    convenience public init?(urlToZipFile:NSURL) {
+        self.init(urlToZipFile: urlToZipFile, type: DFUFirmwareType.SoftdeviceBootloaderApplication)
+    }
+    
+    /**
+     Creates the DFU Firmware object from a Distribution packet (ZIP). Such file must contain a manifest.json file
+     with firmware metadata and at least one firmware binaries. Read more about the Distribution packet on
+     the DFU documentation.
+     
+     - parameter urlToZipFile: URL to the Distribution packet (ZIP)
+     - parameter type:         the type of the firmware to use
+     
+     - returns: the DFU firmware object or null in case of an error
+     */
+    public init?(urlToZipFile:NSURL, type:DFUFirmwareType) {
         fileUrl = urlToZipFile
         fileName = urlToZipFile.lastPathComponent!
         
@@ -95,7 +112,7 @@ The type of the BIN or HEX file.
         }
         
         do {
-            stream = try DFUStreamZip(urlToZipFile: urlToZipFile)
+            stream = try DFUStreamZip(urlToZipFile: urlToZipFile, type: type.rawValue)
         } catch let error as NSError {
             NSLog("Error while creating ZIP stream: \(error.localizedDescription)")
             stream = nil
