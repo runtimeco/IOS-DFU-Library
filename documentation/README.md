@@ -32,12 +32,28 @@ In case of any communication error the peripheral device will never be bricked. 
 
 To include the library in your project do one of those options:
 
-1. Include the library as a precompiled framework:
+1. Cocoapods (recommended):
+
+   Open up a terminal window, cd to your project's root and create a `Podfile` with the follwoing content:
+
+   ```
+   use_frameworks!
+       pod 'iOSDFULibrary'
+   end
+   ```
+   Then install dependencies
+   ```
+   pod install
+   ```
+
+   **Notice:** Our Cocoapods releases will always be the exact same version as this repository. you may [follow our pod repository here](http://github.com/NordicSemiconductor/IOS-Pods-DFU-Library).
+
+2. Include the library as a precompiled framework:
 
    Copy the DFULibrary.framework file to you project.
    Add this framework to Embedded Binaries in the Target->Settings->General.
 
-2. Include the library as source code:
+3. Include the library as source code:
 
    Create a Workspace (if you already don't have one).
    Add your project to the workspace.
@@ -58,7 +74,7 @@ To include the library in your project do one of those options:
    Add (drag&drop) the DFULibrary.framework product file to your Target's Embedded Binaries.
    A framework build may be necessary. The framework must exist (color black, not red).
 
-Despite the chosen option make sure you have the 'Embedded Content contains Swift code' set to YES in your target app Build Settings (Build Options section).
+If you decide to use option **2** or **3**,  make sure you have the `Embedded Content contains Swift code` set to `YES` in your target's **Build Options->Build Settings**
 
 ### Usage
 
