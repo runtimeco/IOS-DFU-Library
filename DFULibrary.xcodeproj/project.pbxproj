@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3082D7CE1D5CB95C004DBD2A /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3082D7CB1D5CB95C004DBD2A /* Manifest.swift */; };
+		3082D7CF1D5CB95C004DBD2A /* ManifestFirmwareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3082D7CC1D5CB95C004DBD2A /* ManifestFirmwareInfo.swift */; };
+		3082D7D01D5CB95C004DBD2A /* SoftdeviceBootloaderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3082D7CD1D5CB95C004DBD2A /* SoftdeviceBootloaderInfo.swift */; };
 		5226B1871C8841380011D523 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226B1861C8841380011D523 /* Double.swift */; };
 		522B81A51C77732F0022B8EB /* LoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B81A41C77732F0022B8EB /* LoggerHelper.swift */; };
 		522B81A81C7B2D390022B8EB /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B81A71C7B2D390022B8EB /* NSData.swift */; };
@@ -42,11 +45,6 @@
 		5254A92E1C72147200AA1164 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A90D1C72147200AA1164 /* QuickZip.swift */; };
 		5254A9301C72147200AA1164 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A90F1C72147200AA1164 /* Zip.swift */; };
 		5254A9311C72147200AA1164 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9101C72147200AA1164 /* ZipUtilities.swift */; };
-		5254A93D1C72269D00AA1164 /* EVExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9361C72269D00AA1164 /* EVExtensions.swift */; };
-		5254A93E1C72269D00AA1164 /* EVObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9371C72269D00AA1164 /* EVObject.swift */; };
-		5254A93F1C72269D00AA1164 /* EVObjectDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A9381C72269D00AA1164 /* EVObjectDescription.swift */; };
-		5254A9411C72269D00AA1164 /* EVReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A93A1C72269D00AA1164 /* EVReflection.swift */; };
-		5254A9421C72269D00AA1164 /* EVWorkaroundHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5254A93B1C72269D00AA1164 /* EVWorkaroundHelpers.swift */; };
 		525EF60C1C737941009260A7 /* IntelHex2BinConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 525EF60A1C737941009260A7 /* IntelHex2BinConverter.h */; };
 		525EF60D1C737941009260A7 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 525EF60B1C737941009260A7 /* IntelHex2BinConverter.m */; };
 		525EF6101C737A67009260A7 /* DFUStreamHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EF60F1C737A67009260A7 /* DFUStreamHex.swift */; };
@@ -82,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3082D7CB1D5CB95C004DBD2A /* Manifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
+		3082D7CC1D5CB95C004DBD2A /* ManifestFirmwareInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManifestFirmwareInfo.swift; sourceTree = "<group>"; };
+		3082D7CD1D5CB95C004DBD2A /* SoftdeviceBootloaderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftdeviceBootloaderInfo.swift; sourceTree = "<group>"; };
 		5226B1861C8841380011D523 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		522B81A41C77732F0022B8EB /* LoggerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerHelper.swift; sourceTree = "<group>"; };
 		522B81A71C7B2D390022B8EB /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
@@ -119,12 +120,6 @@
 		5254A90F1C72147200AA1164 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
 		5254A9101C72147200AA1164 /* ZipUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipUtilities.swift; sourceTree = "<group>"; };
 		5254A9321C7220F300AA1164 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		5254A9361C72269D00AA1164 /* EVExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVExtensions.swift; sourceTree = "<group>"; };
-		5254A9371C72269D00AA1164 /* EVObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVObject.swift; sourceTree = "<group>"; };
-		5254A9381C72269D00AA1164 /* EVObjectDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVObjectDescription.swift; sourceTree = "<group>"; };
-		5254A93A1C72269D00AA1164 /* EVReflection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVReflection.swift; sourceTree = "<group>"; };
-		5254A93B1C72269D00AA1164 /* EVWorkaroundHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVWorkaroundHelpers.swift; sourceTree = "<group>"; };
-		5254A9441C7226D300AA1164 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		525EF60A1C737941009260A7 /* IntelHex2BinConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntelHex2BinConverter.h; path = HexToBinConverter/IntelHex2BinConverter.h; sourceTree = "<group>"; };
 		525EF60B1C737941009260A7 /* IntelHex2BinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntelHex2BinConverter.m; path = HexToBinConverter/IntelHex2BinConverter.m; sourceTree = "<group>"; };
 		525EF60E1C737977009260A7 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = HexToBinConverter/module.modulemap; sourceTree = "<group>"; };
@@ -173,6 +168,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3082D7C91D5CB94F004DBD2A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3082D7CA1D5CB95C004DBD2A /* Manifest */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		3082D7CA1D5CB95C004DBD2A /* Manifest */ = {
+			isa = PBXGroup;
+			children = (
+				3082D7CB1D5CB95C004DBD2A /* Manifest.swift */,
+				3082D7CC1D5CB95C004DBD2A /* ManifestFirmwareInfo.swift */,
+				3082D7CD1D5CB95C004DBD2A /* SoftdeviceBootloaderInfo.swift */,
+			);
+			path = Manifest;
+			sourceTree = "<group>";
+		};
 		522B81A61C7B2D280022B8EB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,23 +263,9 @@
 		5254A9341C72218E00AA1164 /* Third Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				5254A9351C72269D00AA1164 /* EVReflection */,
 				5254A8EC1C72147200AA1164 /* Zip */,
 			);
 			name = "Third Party Libraries";
-			sourceTree = "<group>";
-		};
-		5254A9351C72269D00AA1164 /* EVReflection */ = {
-			isa = PBXGroup;
-			children = (
-				5254A9441C7226D300AA1164 /* README */,
-				5254A9361C72269D00AA1164 /* EVExtensions.swift */,
-				5254A9371C72269D00AA1164 /* EVObject.swift */,
-				5254A9381C72269D00AA1164 /* EVObjectDescription.swift */,
-				5254A93A1C72269D00AA1164 /* EVReflection.swift */,
-				5254A93B1C72269D00AA1164 /* EVWorkaroundHelpers.swift */,
-			);
-			path = EVReflection;
 			sourceTree = "<group>";
 		};
 		525EF6091C7378F5009260A7 /* Hex to Bin Converter */ = {
@@ -363,6 +362,7 @@
 		52C12B861C6C949C004D9DB8 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
+				3082D7C91D5CB94F004DBD2A /* Utilities */,
 				522B81AD1C7E0F450022B8EB /* Peripheral */,
 				525EF61C1C74E17D009260A7 /* Service */,
 				525EF6151C74DD4F009260A7 /* Characteristics */,
@@ -530,20 +530,20 @@
 				5254A91F1C72147200AA1164 /* hmac.c in Sources */,
 				52C12B8A1C6C95B5004D9DB8 /* DFUFirmware.swift in Sources */,
 				525EF60D1C737941009260A7 /* IntelHex2BinConverter.m in Sources */,
-				5254A93D1C72269D00AA1164 /* EVExtensions.swift in Sources */,
+				3082D7CF1D5CB95C004DBD2A /* ManifestFirmwareInfo.swift in Sources */,
+				3082D7D01D5CB95C004DBD2A /* SoftdeviceBootloaderInfo.swift in Sources */,
 				52C12B801C6B958E004D9DB8 /* LoggerDelegate.swift in Sources */,
 				525EF6171C74DD63009260A7 /* DFUVersion.swift in Sources */,
 				5254A9171C72147200AA1164 /* aestab.c in Sources */,
 				525EF61E1C74E8C0009260A7 /* DFUPeripheralDelegate.swift in Sources */,
+				3082D7CE1D5CB95C004DBD2A /* Manifest.swift in Sources */,
 				5254A91D1C72147200AA1164 /* fileenc.c in Sources */,
 				52C12B881C6C94B6004D9DB8 /* DFUExecutor.swift in Sources */,
 				5254A9151C72147200AA1164 /* aeskey.c in Sources */,
 				5254A92E1C72147200AA1164 /* QuickZip.swift in Sources */,
 				5254A9211C72147200AA1164 /* prng.c in Sources */,
-				5254A9421C72269D00AA1164 /* EVWorkaroundHelpers.swift in Sources */,
 				52C12C211C6DF242004D9DB8 /* DFUStreamZip.swift in Sources */,
 				525EF6221C77423A009260A7 /* DFUService.swift in Sources */,
-				5254A93E1C72269D00AA1164 /* EVObject.swift in Sources */,
 				522B81A51C77732F0022B8EB /* LoggerHelper.swift in Sources */,
 				5254A9141C72147200AA1164 /* aescrypt.c in Sources */,
 				52C12B821C6C8825004D9DB8 /* DFUServiceController.swift in Sources */,
@@ -552,7 +552,6 @@
 				525EF6141C74BAAD009260A7 /* DFUPeripheral.swift in Sources */,
 				5254A9251C72147200AA1164 /* sha1.c in Sources */,
 				52C12C1D1C6D12D2004D9DB8 /* DFUStream.swift in Sources */,
-				5254A93F1C72269D00AA1164 /* EVObjectDescription.swift in Sources */,
 				5254A9281C72147200AA1164 /* ioapi.c in Sources */,
 				5254A9311C72147200AA1164 /* ZipUtilities.swift in Sources */,
 				5254A92A1C72147200AA1164 /* unzip.c in Sources */,
@@ -562,7 +561,6 @@
 				52C12B851C6C8F11004D9DB8 /* ZipArchive.swift in Sources */,
 				525EF61B1C74DE1B009260A7 /* DFUControlPoint.swift in Sources */,
 				522B81A81C7B2D390022B8EB /* NSData.swift in Sources */,
-				5254A9411C72269D00AA1164 /* EVReflection.swift in Sources */,
 				5226B1871C8841380011D523 /* Double.swift in Sources */,
 				5254A9231C72147200AA1164 /* pwd2key.c in Sources */,
 				525EF6101C737A67009260A7 /* DFUStreamHex.swift in Sources */,
